@@ -34,3 +34,6 @@ Create a simple library management system using Rust that involves adding books,
 1. Clone this repository to your local machine.
 2. Implement the required functions in `main.rs`.
 3. Use the `main` function to interact with the user and demonstrate the functionality of your program.
+
+## Hint (Optional)
+When creating a new book or modifying its fields, avoid assigning any field with a value of 0. This is because using numeric IDs for simplicity may lead to confusion or errors if 0 is used as a valid value for any field. It's recommended to use non-zero values for all fields to ensure consistency and avoid potential issues in your library management system.
