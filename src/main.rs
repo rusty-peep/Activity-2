@@ -1,3 +1,5 @@
+mod tests;
+
 struct BankAccount {
     account_number: u32,
     balance: f64,

@@ -1,5 +1,6 @@
 #[cfg(test)]
 mod tests {
+    use crate::BankAccount;
     use super::*;
 
     #[test]

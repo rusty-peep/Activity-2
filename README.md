@@ -19,4 +19,4 @@ This assignment involves creating a simple `BankAccount` struct to simulate basi
 3. **Test the `BankAccount` Struct:**
     - Create instances of `BankAccount` and test the methods in the `main` function.
 
-
+After completing the main file, run `cargo run` to check if it's working properly. Do not modify the `tests.rs` file, as any modification in `tests.rs` will lead to cancellation of markings.
