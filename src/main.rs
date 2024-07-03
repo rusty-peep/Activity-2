@@ -1,76 +1,55 @@
-
-#[derive(Debug)]
-struct Book {
-    id: u32,        // Unique identifier for the book
-    title: u32,     // Title of the book
-    author: u32,    // Author of the book
-    is_available: bool, // Availability status of the book
+struct BankAccount {
+    account_number: u32,
+    balance: f64,
 }
 
-impl Book {
-    fn new(id: u32, title: u32, author: u32) -> Book {
+impl BankAccount {
+    // Function to create a new bank account
+    fn new(account_number: u32, initial_balance: f64) -> BankAccount {
         todo!()
     }
 
-    fn borrow(&mut self) {
+    // Function to get account balance
+    fn get_balance(&self) -> f64 {
+        self.balance
+    }
+
+    // Function to deposit money
+    fn deposit(self, amount: f64) -> BankAccount {
         todo!()
     }
 
-    fn return_book(&mut self) {
-        todo!()
-    }
-}
-
-struct Library {
-    books: Vec<Book>, // Collection of books in the library
-}
-
-impl Library {
-    fn new() -> Library {
+    // Function to withdraw money
+    fn withdraw(self, amount: f64) -> BankAccount {
         todo!()
     }
 
-    fn add_book(&mut self, book: Book) {
-        todo!()
-    }
-
-    fn list_books(&self) {
-        todo!()
-    }
-
-    fn find_book_index(&self, id: u32) -> i32 {
-        todo!()
-    }
-
-    fn borrow_book(&mut self, id: u32) {
-        todo!()
-    }
-
-    fn return_book(&mut self, id: u32) {
+    // Function to transfer money from one account to another
+    fn transfer(self, to_account: BankAccount, amount: f64) -> (BankAccount, BankAccount) {
         todo!()
     }
 }
 
 fn main() {
-    let mut library = Library::new();
+    let account1 = BankAccount::new(123456, 1000.0);
+    let account2 = BankAccount::new(654321, 500.0);
 
-    // Adding books to the library
-    library.add_book(Book::new(1, 101, 201));
-    library.add_book(Book::new(2, 102, 202));
-    library.add_book(Book::new(3, 103, 203));
+    // Print initial balances
+    println!("Initial Balance of Account 1: ${:.2}", account1.get_balance());
+    println!("Initial Balance of Account 2: ${:.2}", account2.get_balance());
 
-    println!("Library books:");
-    library.list_books();
+    // Deposit money into account1
+    let account1 = account1.deposit(500.0);
+    println!("Balance of Account 1 after deposit: ${:.2}", account1.get_balance());
 
-    println!("\nBorrowing book with ID 2:");
-    library.borrow_book(2);
+    // Withdraw money from account1
+    let account1 = account1.withdraw(300.0);
+    println!("Balance of Account 1 after withdrawal: ${:.2}", account1.get_balance());
 
-    println!("\nLibrary books after borrowing:");
-    library.list_books();
+    // Transfer money from account1 to account2
+    let (account1, account2) = account1.transfer(account2, 200.0);
 
-    println!("\nReturning book with ID 2:");
-    library.return_book(2);
-
-    println!("\nLibrary books after returning:");
-    library.list_books();
+    // Print balances after transfer
+    println!("Balance of Account 1 after transfer: ${:.2}", account1.get_balance());
+    println!("Balance of Account 2 after transfer: ${:.2}", account2.get_balance());
 }
