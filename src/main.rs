@@ -6,7 +6,10 @@ struct BankAccount {
 impl BankAccount {
     // Function to create a new bank account
     fn new(account_number: u32, initial_balance: f64) -> BankAccount {
-        todo!()
+        BankAccount {
+            account_number,
+            balance: initial_balance,
+        }
     }
 
     // Function to get account balance
@@ -16,17 +19,38 @@ impl BankAccount {
 
     // Function to deposit money
     fn deposit(self, amount: f64) -> BankAccount {
-        todo!()
+        BankAccount {
+            account_number: self.account_number,
+            balance: self.balance + amount,
+        }
     }
 
     // Function to withdraw money
     fn withdraw(self, amount: f64) -> BankAccount {
-        todo!()
+        if amount <= self.balance {
+            BankAccount {
+                account_number: self.account_number,
+                balance: self.balance - amount,
+            }
+        } else {
+            self // Return the original account if withdrawal is not possible
+        }
     }
 
     // Function to transfer money from one account to another
-    fn transfer(self, to_account: BankAccount, amount: f64) -> (BankAccount, BankAccount) {
-        todo!()
+    fn transfer(self, mut to_account: BankAccount, amount: f64) -> (BankAccount, BankAccount) {
+        if amount <= self.balance {
+            to_account = to_account.deposit(amount);
+            (
+                BankAccount {
+                    account_number: self.account_number,
+                    balance: self.balance - amount,
+                },
+                to_account,
+            )
+        } else {
+            (self, to_account) // Return the original accounts if transfer is not possible
+        }
     }
 }
 
@@ -53,3 +77,4 @@ fn main() {
     println!("Balance of Account 1 after transfer: ${:.2}", account1.get_balance());
     println!("Balance of Account 2 after transfer: ${:.2}", account2.get_balance());
 }
+
