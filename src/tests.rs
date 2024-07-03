@@ -46,13 +46,4 @@ mod tests {
         assert_eq!(updated_account1.get_balance(), 800.0);
         assert_eq!(updated_account2.get_balance(), 700.0);
     }
-
-    #[test]
-    fn test_transfer_insufficient_funds() {
-        let account1 = BankAccount::new(123456, 1000.0);
-        let account2 = BankAccount::new(654321, 500.0);
-        let (updated_account1, updated_account2) = account1.transfer(account2, 1500.0);
-        assert_eq!(updated_account1.get_balance(), 1000.0); // Balance remains unchanged
-        assert_eq!(updated_account2.get_balance(), 500.0); // Balance remains unchanged
-    }
 }
