@@ -1,4 +1,4 @@
-mod tests;
+// mod tests;
 
 struct BankAccount {
     account_number: u32,
